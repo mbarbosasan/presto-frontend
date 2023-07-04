@@ -1,0 +1,99 @@
+<form>
+  <h2>Cadastro de Review</h2>
+  <div class="field">
+    <label for="title" class="label">Titulo</label>
+    <div class="control">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        class="input"
+        [(ngModel)]="newReview.title"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label for="description" class="label">Descrição</label>
+    <div class="control">
+      <textarea
+        name="description"
+        id="description"
+        cols="30"
+        rows="5"
+        class="textarea"
+        [(ngModel)]="newReview.description"
+      ></textarea>
+    </div>
+  </div>
+  <div
+    class="field is-flex align-items-center is-justify-content-flex-start"
+    style="gap: 10px"
+  >
+    <section>
+      <label for="rating_cxb" class="label">Avaliação CxB</label>
+      <div class="control">
+        <input
+          name="rating_cxb"
+          id="rating_cxb"
+          type="number"
+          min="1"
+          max="5"
+          class="input"
+          [(ngModel)]="newReview.rating_cxb"
+        />
+      </div>
+    </section>
+    <section>
+      <label for="rating_quality" class="label">Avaliação Qualidade</label>
+      <div class="control">
+        <input
+          name="rating_quality"
+          id="rating_quality"
+          type="number"
+          min="1"
+          max="5"
+          class="input"
+          [(ngModel)]="newReview.rating_quality"
+        />
+      </div>
+    </section>
+    <section>
+      <label for="rating_price" class="label">Avaliação Preço</label>
+      <div class="control">
+        <input
+          name="rating_price"
+          id="rating_price"
+          type="text"
+          min="1"
+          max="5"
+          class="input"
+          [(ngModel)]="newReview.rating_price"
+        />
+      </div>
+    </section>
+  </div>
+  <section class="field">
+    <label for="product_name" class="label">Produto</label>
+    <input type="text" name="product_name" id="product_name" class="input" [(ngModel)]="newReview.product_name" />
+  </section>
+  <section class="field">
+    <label for="product_price" class="label">Preço</label>
+    <input id="product_price" name="product_price" type="number" class="input" step="0.01" [(ngModel)]="newReview.product_price"/>
+  </section>
+  <section class="field">
+    <div class="file">
+      <label for="product_image" class="file-label">
+      <input class="file-input" type="file" name="product_image" id="product_image" [(ngModel)]="newReview.product_image">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Choose a file…
+        </span>
+      </span>
+      </label>
+    </div>
+  </section>
+  <button class="button is-success" (click)="addReview()">Add Review</button>
+</form>

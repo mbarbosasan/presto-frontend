@@ -1,6 +1,6 @@
-import { createReducer, on } from '@ngrx/store';
-import {initialState} from "../reviews.state";
-import {addReview, getAllReviews, removeReview} from "../actions/reviews.action";
+import {initialState} from "./reviews.state";
+import {createReducer, on} from "@ngrx/store";
+import {addReview, getAllReviews, removeReview} from "./reviews.action";
 
 export const ReviewsReducer = createReducer(
   initialState,

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Reviews} from "../state/reviews.state";
 import { Store } from '@ngrx/store';
-import {removeReview} from "../state/actions/reviews.action";
+import {removeReview} from "../state/reviews.action";
 
 @Component({
   selector: 'app-reviews-card',

@@ -3,11 +3,22 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { ReviewsListComponent } from './reviews-list/reviews-list.component';
 
 import { StoreModule } from '@ngrx/store';
-import {ReviewsReducer} from "./state/reducers/reviews.reducer";
 import {FormsModule} from "@angular/forms";
 import { ReviewsFormComponent } from './reviews-form/reviews-form.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReviewsCardComponent } from './reviews-card/reviews-card.component';
+import {ButtonModule} from "primeng/button";
+import {DialogModule} from "primeng/dialog";
+import {InputTextModule} from "primeng/inputtext";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {RatingModule} from "primeng/rating";
+import {FileUploadModule} from "primeng/fileupload";
+import {InputNumberModule} from "primeng/inputnumber";
+import {ReviewsReducer} from "./state/reviews.reducer";
+import {EffectsModule} from "@ngrx/effects";
+import {ReviewsEffects} from "./state/reviews.effects";
+import {ReviewsRoutingModule} from "./reviews-routing.module";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -19,15 +30,25 @@ import { ReviewsCardComponent } from './reviews-card/reviews-card.component';
   exports: [
     ReviewsListComponent
   ],
-    imports: [
-        CommonModule,
-        StoreModule.forFeature('reviews', ReviewsReducer),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25,
-            logOnly: !isDevMode(),
-        }),
-        FormsModule,
-        NgOptimizedImage,
-    ]
+  imports: [
+    CommonModule,
+    ReviewsRoutingModule,
+    StoreModule.forFeature('reviews', ReviewsReducer),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+    }),
+    EffectsModule.forFeature(ReviewsEffects),
+    FormsModule,
+    NgOptimizedImage,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    InputTextareaModule,
+    RatingModule,
+    FileUploadModule,
+    InputNumberModule,
+    HttpClientModule
+  ]
 })
 export class ReviewsModule { }

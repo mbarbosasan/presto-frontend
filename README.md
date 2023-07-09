@@ -1,6 +1,12 @@
 # PrestoFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+<p>Protótipo</p>
+
+![image](https://github.com/mbarbosasan/presto-frontend/assets/77524475/785e4f02-82d5-4a53-8de8-7ad607d52df8)
+
+Mais informações sobre o projeto:
+
+https://github.com/mbarbosasan/presto-app
 
 ## Development server
 

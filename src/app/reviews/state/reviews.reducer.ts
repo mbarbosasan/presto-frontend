@@ -12,26 +12,24 @@ export const ReviewsReducer = createReducer(
   on(addReview, (state, {review}) => {
     return {
       ...state,
-      reviews: [...state.reviewsState.reviews, review]
+      reviews: [...state.reviews, review]
     }
   }),
   on(removeReview, (state, {review}) => {
     return {
       ...state,
-      reviews: state.reviewsState.reviews.filter(item => item !== review)
+      reviews: state.reviews.filter(item => item !== review)
     }
   }),
-  on(onCreateReviewSuccess, state => {
+  on(onCreateReviewSuccess, (state) => {
     return {
       ...state,
-      status: 'success',
     }
   }),
   on(onCreateReviewFailure, (state, {error}) => {
     return {
       ...state,
-      status: 'failure',
-      error: error,
+      error: error
     }
   })
 )

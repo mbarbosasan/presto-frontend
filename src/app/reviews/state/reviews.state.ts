@@ -18,12 +18,8 @@ export interface ReviewsState {
   error?: any;
 }
 
-export interface AppState {
-  reviewsState: ReviewsState;
-}
-
-export const initialState: AppState = {
-  reviewsState: {
-    reviews: [],
-  }
+export const initialState: ReviewsState = {
+  reviews: [],
+  status: undefined,
+  error: undefined,
 }

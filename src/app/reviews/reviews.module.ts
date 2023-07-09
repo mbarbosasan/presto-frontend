@@ -21,6 +21,7 @@ import {ReviewsRoutingModule} from "./reviews-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
+import {CardModule} from "primeng/card";
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {ToastModule} from "primeng/toast";
     FileUploadModule,
     InputNumberModule,
     HttpClientModule,
-    ToastModule
+    ToastModule,
+    CardModule
   ],
   providers: [MessageService]
 })

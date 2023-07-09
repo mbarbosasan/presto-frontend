@@ -15,4 +15,8 @@ export class ReviewsService {
     formData.append('review', JSON.stringify(review))
     return this.http.post("http://localhost:3000/reviews/create", formData);
   }
+
+  getAllReviews() {
+    return this.http.get<Reviews[]>("http://localhost:3000/reviews");
+  }
 }

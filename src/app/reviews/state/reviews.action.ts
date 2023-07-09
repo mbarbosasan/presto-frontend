@@ -9,6 +9,10 @@ export const addReview = createAction(
   '[Reviews] Add Review', props<{review: Reviews, file: Blob}>()
 );
 
+export const addAllReview = createAction(
+  '[Reviews] Add All Review', props<{reviews: Reviews[]}>()
+);
+
 export const removeReview = createAction(
   '[Reviews] Remove Review', props<{review: Reviews}>()
 );

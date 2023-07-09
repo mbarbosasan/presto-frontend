@@ -10,13 +10,7 @@
     <p-inputNumber [(ngModel)]="newReview.product_price" id="price" mode="currency" locale="pt" currency="BRL" placeholder="R$ 0,00"></p-inputNumber>
     <label for="product_image" class="font-semibold">Imagem do Produto</label>
     <div>
-      <p-fileUpload [files]="file" mode="basic" id="product_image" chooseLabel="Selecione" name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [customUpload]="true" [auto]="false" (onSelect)="onUpload($event)">
-        <ng-template pTemplate="file">
-          <ul *ngFor="let file of file">
-            <li>{{file.name}}</li>
-          </ul>
-        </ng-template>
-      </p-fileUpload>
+      <p-fileUpload mode="basic" id="product_image" chooseLabel="Selecione" name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [customUpload]="true" [auto]="false" (onSelect)="onUpload($event)"></p-fileUpload>
     </div>
     <label for="description" class="font-semibold">Descrição</label>
     <textarea [(ngModel)]="newReview.description" pInputTextarea id="description" placeholder="Escreva aqui sua experiência com o produto" rows="5"></textarea>

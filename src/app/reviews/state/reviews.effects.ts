@@ -7,10 +7,10 @@ import {Injectable} from "@angular/core";
 export class ReviewsEffects {
   createReview$ = createEffect(() => this.actions$.pipe(
     ofType(addReview),
-    exhaustMap((review) => this.reviewsService.createReview(review.review)
+    exhaustMap(({review, file}) => this.reviewsService.createReview(review, file)
       .pipe(
         map(() => (onCreateReviewSuccess())),
-        catchError((error) => of(onCreateReviewFailure({error})))
+        catchError((error) => of(onCreateReviewFailure(error)))
       ))
   ))
   constructor(private actions$: Actions, private reviewsService: ReviewsService) {}

@@ -11,7 +11,7 @@ import {addReview} from '../state/reviews.action';
 })
 export class ReviewsFormComponent {
   visible: boolean = false;
-  file: File[] = [];
+  file: Blob = new Blob();
 
   newReview: Reviews = {
     userId: 4,
@@ -24,7 +24,6 @@ export class ReviewsFormComponent {
     timestamp: new Date().toISOString(),
     product_name: '',
     product_price: 0,
-    product_image: undefined,
     categoryId: 1,
   };
 
@@ -39,7 +38,7 @@ export class ReviewsFormComponent {
       this.newReview.rating_quality,
       this.newReview.rating_price
     );
-    this.store.dispatch(addReview({review: this.newReview}));
+    this.store.dispatch(addReview({review: this.newReview, file: this.file}));
     this.visible = false;
   }
 
@@ -56,6 +55,6 @@ export class ReviewsFormComponent {
   }
 
   async onUpload(event: FileSelectEvent) {
-    this.newReview.product_image = await new Response(event.files[0]).text();
+    this.file = event.files[0];
   }
 }

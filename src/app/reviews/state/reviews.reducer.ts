@@ -20,5 +20,5 @@ export const ReviewsReducer = createReducer(
       ...state,
       reviews: state.reviewsState.reviews.filter(item => item !== review)
     }
-  })
+  }),
 )

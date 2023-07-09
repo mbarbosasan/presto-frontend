@@ -6,7 +6,7 @@ export const getAllReviews = createAction(
 )
 
 export const addReview = createAction(
-  '[Reviews] Add Review', props<{review: Reviews}>()
+  '[Reviews] Add Review', props<{review: Reviews, file: Blob}>()
 );
 
 export const removeReview = createAction(

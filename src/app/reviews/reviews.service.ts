@@ -9,11 +9,10 @@ export class ReviewsService {
 
   constructor(private http: HttpClient) { }
 
-  createReview(review: Reviews) {
-    return this.http.post("http://localhost:3000/reviews/create", review, {
-      headers: {
-        'Authorization': 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInVzZXJuYW1lIjoiZW1haWwxQG1haWwuY29tIiwiaWF0IjoxNjg4ODcwMDYyLCJleHAiOjE2ODg4NzAxMjJ9.SyuXwdi9Ab-zodlu-aXS3FY56TUTlTL6cEAJxJgcprE"
-      }
-    });
+  createReview(review: Reviews, file: Blob) {
+    const formData = new FormData()
+    formData.append('file', file, "product_image.png")
+    formData.append('review', JSON.stringify(review))
+    return this.http.post("http://localhost:3000/reviews/create", formData);
   }
 }

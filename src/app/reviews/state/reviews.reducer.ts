@@ -1,6 +1,6 @@
 import {initialState} from "./reviews.state";
 import {createReducer, on} from "@ngrx/store";
-import {addReview, getAllReviews, removeReview} from "./reviews.action";
+import {addReview, getAllReviews, onCreateReviewFailure, onCreateReviewSuccess, removeReview} from "./reviews.action";
 
 export const ReviewsReducer = createReducer(
   initialState,
@@ -21,4 +21,17 @@ export const ReviewsReducer = createReducer(
       reviews: state.reviewsState.reviews.filter(item => item !== review)
     }
   }),
+  on(onCreateReviewSuccess, state => {
+    return {
+      ...state,
+      status: 'success',
+    }
+  }),
+  on(onCreateReviewFailure, (state, {error}) => {
+    return {
+      ...state,
+      status: 'failure',
+      error: error,
+    }
+  })
 )

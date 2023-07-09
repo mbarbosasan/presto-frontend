@@ -14,6 +14,8 @@ export interface Reviews {
 
 export interface ReviewsState {
   reviews: Reviews[];
+  status?: 'success' | 'failure' | 'pending';
+  error?: any;
 }
 
 export interface AppState {

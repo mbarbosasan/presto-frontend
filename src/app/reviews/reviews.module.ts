@@ -19,6 +19,8 @@ import {EffectsModule} from "@ngrx/effects";
 import {ReviewsEffects} from "./state/reviews.effects";
 import {ReviewsRoutingModule} from "./reviews-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import {MessageService} from "primeng/api";
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {HttpClientModule} from "@angular/common/http";
     RatingModule,
     FileUploadModule,
     InputNumberModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    ToastModule
+  ],
+  providers: [MessageService]
 })
 export class ReviewsModule { }

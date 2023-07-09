@@ -1,17 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Reviews} from '../state/reviews.state';
 import {Store} from '@ngrx/store';
 import {FileSelectEvent,} from 'primeng/fileupload';
 import {addReview} from '../state/reviews.action';
+import {statusSelector} from "../state/reviews.selector";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-reviews-form',
   templateUrl: './reviews-form.component.html',
   styleUrls: ['./reviews-form.component.scss'],
 })
-export class ReviewsFormComponent {
+export class ReviewsFormComponent implements OnInit {
   visible: boolean = false;
   file: Blob = new Blob();
+  status$ = this.store.select(statusSelector);
 
   newReview: Reviews = {
     userId: 4,
@@ -27,7 +30,17 @@ export class ReviewsFormComponent {
     categoryId: 1,
   };
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private messageService: MessageService) {
+  }
+
+  ngOnInit() {
+    this.status$.subscribe(({status, error}) => {
+      if (status === 'success') {
+       return this.messageService.add({severity:'success', summary: 'Success', detail: 'Review added successfully'});
+      } else if (status === 'failure') {
+        return this.messageService.add({severity:'error', summary: 'Error', detail: 'Review failed to add. Stacktrace: ' + error});
+      }
+    })
   }
 
   addReview() {
@@ -57,4 +70,6 @@ export class ReviewsFormComponent {
   async onUpload(event: FileSelectEvent) {
     this.file = event.files[0];
   }
+
+
 }

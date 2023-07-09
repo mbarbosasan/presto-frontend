@@ -7,3 +7,13 @@ export const reviewsSelector = createSelector(
   featureKey,
   (state: ReviewsState) => state.reviews
 )
+
+export const statusSelector = createSelector(
+  featureKey,
+  (state: ReviewsState) => {
+    return {
+      status: state.status,
+      error: state.error,
+    }
+  }
+)
